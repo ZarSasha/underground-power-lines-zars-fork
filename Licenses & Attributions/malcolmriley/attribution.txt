@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+ATTRIBUTION
+-------------------------------------------------------------------------------
+
+The images within the graphics folder were borrowed from the GitHub repository
+"unused-renders" by malcolmriley. They are released under the Creative Commons
+Attribution 4.0 International License.
+
+Original assets (unaltered):
+  icons/material-rubber-sheet-1.png
+  icons/material-rubber-sheet-2.png
+  icons/material-rubber-sheet-3.png
+  icons/material-rubber-sheet-4.png
+
+Source:
+  https://github.com/malcolmriley/unused-renders
+
+Author page:
+  https://github.com/malcolmriley
+
+License document:
+  https://creativecommons.org/licenses/by/4.0/
+
+-------------------------------------------------------------------------------

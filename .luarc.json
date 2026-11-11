@@ -1,0 +1,11 @@
+{
+    "diagnostics.globals": [
+        "data",
+        "util",
+        "kg",
+        "mods",
+        "settings",
+        "pipecoverspictures",
+        "defines"
+    ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "underground-power-lines-zars-fork",
+  "version": "1.0.0",
+  "title": "UPL - Underground Power Lines (ZarSasha's Fork)",
+  "author": "ZarSasha, Giovy2001",
+  "factorio_version": "2.1",
+  "description": "Provides underground alternatives to the electric poles + substation, for the sole purpose of hiding suspended power cables.",
+  "dependencies": [
+      "base",
+      "? bobplates",
+      "? bobelectronics",
+      "? angelsrefining",
+      "? angelspetrochem",
+      "? angelssmelting",
+      "? angelsbioprocessing",
+      "? pypetroleumhandling",
+      "? delta-rubber",
+      "? nullius",
+      "? Krastorio2",
+      "? wood-industry",
+      "! underground-power-lines"
+  ]
+}

@@ -1,0 +1,25 @@
+-------------------------------------------------------------------------------
+ATTRIBUTION
+-------------------------------------------------------------------------------
+
+The images for resin within th graphics folder were borrowed from the mod
+"Rubber [Δ]" by AzzyBunn/AzraelBunn, which has been released under the GNU
+LESSER GENERAL PUBLIC LICENSE V3.
+
+Original assets (unaltered):
+  icons/resin.png
+  icons/resin-1.png
+  icons/resin-2.png
+
+Mod pages:
+  https://mods.factorio.com/mod/delta-rubber
+  https://github.com/DeltaFA/delta-rubber
+
+Author pages:
+  https://mods.factorio.com/user/AzzyBunn
+  https://github.com/AzraelBunn
+
+License document:
+  https://opensource.org/license/lgpl-3.0
+
+-------------------------------------------------------------------------------

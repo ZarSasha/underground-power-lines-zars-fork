@@ -1,0 +1,69 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 2026-11-11
+  Changes:
+    - Forked and updated the mod "UPL - Underground Power Lines" by Giovy2001 so it works with
+      Factorio 2.1. Also extensively modified it according to my own preferences; it has generally
+      been streamlined to focus more on its aesthetic purpose of just hiding the wires. The same
+      MIT license applies to most of this fork (see Graphics entry).
+    - All underground outlets now have recipes that are very similar to those of their vanilla
+      counterparts: Only wood and irons sticks get replaced with iron plates, and copper cables
+      with an insulated variant.
+    - All underground outlets (except the small one) can now be unlocked right after their vanilla
+      counterpart, with the exact same science packs and at greatly reduced cost.
+    - All underground outlets now use the exact same insulated copper cable as ingredient, but it
+      may be produced in several ways on the basis of different materials at different tech stages.
+    - Provided a reasonably realistic, early source of insulating material for the underground
+      cables: Resin is extracted from wood, and both combine with steam in a modified assembler
+      Mk1 or a chemical plant to produce a resinated wood elastomer, which looks like plastic.
+    - Created a new (dummy) tech required by all outlets, which unlocks by crafting 1 insulated
+      copper cable. This was done because the cable may be produced in more than one way, perhaps
+      even early on, depending on what other mods are present. (The outlets are also easier to
+      find in the tech tree this way).
+  Balancing:
+    - Modified the recipe for oil-based (synthetic) rubber so it requires much less stone relative
+      to petroleum gas. It should now be equivalent to the plastic recipe.
+    - Greatly reduced research cost in general.
+    - With the resinated wood elastomer production chain, a small electric outlet requires a total
+      amount of 1 wood for its recipe. This rises to 2, 3 and 4 for the next tiers of outlets. So
+      if you are short on wood, it makes sense to switch to a recipe for the insulated cable that
+      relies on rubber or plastic instead, when you can.
+  Graphics:
+    - Borrowed graphical assets for resin from the mod "Rubber [Δ]" by AzzyBunn, which was released
+      under a GNU LGPLv3 license, and assets for rubber from the GitHub repository "unused-renders"
+      released by malcolmriley under a CC-BY 4.0 International license. Some assets were edited
+      and/or recombined in various ways. See the folder "Licenses & Attributions" within the mod.
+    - Removed the dirt patch underneath the outlets, and the related runtime setting (I did not
+      like how outlets would permanently transform the landscape and leave black dots on the map.)
+    - Removed night-time light effect from underground outlets. Might re-add them if anyone thinks
+      that they matter.
+    - Mod thumbnail: Slightly altered color so it appears at least a little bit different.
+  Info:
+    - Overhauled names and descriptions, reordered items and recipes.
+  Compatibility:
+    - Bob´s & Angel's: Makes use of the resin and rubber from these mods. Compatiblity is not
+      complete and assumes the presence of "Bob's Electronics", "Bob's Metals, Chemicals and
+      Intermediates", "Angel's Petrochemical Processing" and optionally "Angel's Bio Processing".
+    - Krastorio 2: Adapts recipes to match changes made, and even provides an underground variant
+      of the superior substation.
+    - Pyanodon's: Makes use of the rubber from "Pyanodon's Petroleum Handling" for crafting the
+      insulated copper cable. Also adapts recipes for outlets when "Pyanodon's Coal Processing" is
+      present.
+    - Wooden Industry: Makes use of resin and woodchips from this mod. Keeps resin recipe as an
+      early but inefficient alternative, removes all things rubber, adapts elastomer recipe to use
+      wood chips instead of wood, for slightly higher realism.
+    - Rubber [Δ]: Makes use of the resin and rubber from this mod instead to craft the insulated
+      copper cable (which will be unlocked with electronics at the start). Note that this mod has
+      a different recipe for synthetic rubber, which also unlocks later.
+    - Removed outlets as the next upgrade from electric poles so the game won't crash with certain
+      other mods, such as Nullius. (They still retain their fast replacement group.) May re-add
+      this functionality later, but with adaptations and/or settings for it. NB: The mod does not
+      work with Nullius in any case, at least not yet!
+  Internal:
+    - Restructured mod, tidied up.
+  Notes:
+    - I have made the assumption that the mod mainly exists to solve an aesthetic problem (visually
+      distracting wires) and that it should provide a reasonably straight-forward and affordable
+      solution for it. But I do also care about realism, and I wanted a good, moisture-resistant,
+      electrically insulating material that plausibly could be produced early on. I came up with
+      resinated wood elastomer as an early alternative to plastic, the perfect, modern insulator.

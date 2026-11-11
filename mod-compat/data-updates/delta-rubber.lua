@@ -6,7 +6,7 @@
 local MOD  = require "shared.mod"
 if not MOD.delta_rubber then return end
 local ID   = require "shared.names"
-local FUNC = require "functions"
+local FPD  = require "functions.prototypes-database"
 ---------------------------------------------------------------------------------------------------
 -- RUBBER [∆]
 ---------------------------------------------------------------------------------------------------
@@ -18,19 +18,19 @@ local FUNC = require "functions"
 -- left alone, though.
 
 -- Hides resin and rubber items/recipes and tech that unlocks them.
-FUNC.HideItem(ID.item.resin)
-FUNC.HideItem(ID.item.wood_elastomer)
-FUNC.HideItem(ID.item.rubber)
-FUNC.HideRecipe(ID.recipe.resin)
-FUNC.HideRecipe(ID.recipe.wood_elastomer)
-FUNC.HideRecipe(ID.recipe.synthetic_rubber)
-FUNC.HideRecipe(ID.recipe.elastomer_cable)
-FUNC.HideTech(ID.tech.wood_elastomer)
-FUNC.HideTech(ID.tech.synthetic_rubber)
+FPD.HideItem(ID.item.resin)
+FPD.HideItem(ID.item.wood_elastomer)
+FPD.HideItem(ID.item.rubber)
+FPD.HideRecipe(ID.recipe.resin)
+FPD.HideRecipe(ID.recipe.wood_elastomer)
+FPD.HideRecipe(ID.recipe.synthetic_rubber)
+FPD.HideRecipe(ID.recipe.elastomer_cable)
+FPD.HideTech(ID.tech.wood_elastomer)
+FPD.HideTech(ID.tech.synthetic_rubber)
 
 -- Enables recipe for insulated cable with electronics tech and switches the rubber ingredient.
-FUNC.AddRecipeUnlock("electronics", ID.recipe.rubber_cable)
-FUNC.ReplaceIngredientName(ID.recipe.rubber_cable, ID.item.rubber, "rubber")
+FPD.AddRecipeUnlock("electronics", ID.recipe.rubber_cable)
+FPD.ReplaceIngredientName(ID.recipe.rubber_cable, ID.item.rubber, "rubber")
 
 -- Replaces secondary icon representing the rubber used in the recipe for the insulated cable.
 local rubber_cable = data.raw.recipe[ID.recipe.rubber_cable]

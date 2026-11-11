@@ -6,7 +6,7 @@
 local MOD  = require "shared.mod"
 if not (MOD.py_coal_proc or MOD.py_petroleum) then return end
 local ID   = require "shared.names"
-local FUNC   = require "functions"
+local FPD  = require "functions.prototypes-database"
 ---------------------------------------------------------------------------------------------------
 -- PYANODON'S MOD SUITE
 ---------------------------------------------------------------------------------------------------
@@ -68,11 +68,11 @@ end
 -- Pyanodon's Petroleum Handling adds rubber fairly early on, so this mod will make use of that
 -- instead.
 if MOD.py_petroleum then
-    FUNC.HideItem(ID.item.rubber)
-    FUNC.HideRecipe(ID.recipe.synthetic_rubber)
-    FUNC.HideTech(ID.tech.synthetic_rubber)
-    FUNC.ReplaceIngredientName(ID.recipe.rubber_cable, ID.item.rubber, "rubber")
-    FUNC.AddRecipeUnlock("rubber", ID.recipe.rubber_cable)
+    FPD.HideItem(ID.item.rubber)
+    FPD.HideRecipe(ID.recipe.synthetic_rubber)
+    FPD.HideTech(ID.tech.synthetic_rubber)
+    FPD.ReplaceIngredientName(ID.recipe.rubber_cable, ID.item.rubber, "rubber")
+    FPD.AddRecipeUnlock("rubber", ID.recipe.rubber_cable)
 end
 
 ---------------------------------------------------------------------------------------------------

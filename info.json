@@ -4,7 +4,7 @@
   "title": "UPL - Underground Power Lines (ZarSasha's Fork)",
   "author": "ZarSasha, Giovy2001",
   "factorio_version": "2.1",
-  "description": "Provides underground alternatives to the electric poles + substation, for the sole purpose of hiding suspended power cables.",
+  "description": "Adds underground electric outlets to the game for the purpose of hiding overhead wires. A 2.1 overhauled port of the mod of the same name, by Giovy2001.",
   "dependencies": [
       "base",
       "? bobplates",

@@ -5,7 +5,6 @@
 ---------------------------------------------------------------------------------------------------
 local MOD  = require "shared.mod"
 local ID   = require "shared.names"
-local FUNC = require "functions"
 local prototypes = {}
 ---------------------------------------------------------------------------------------------------
 -- DUMMY TECHNOLOGY FOR INSULATED COPPER CABLE

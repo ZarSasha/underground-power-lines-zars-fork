@@ -5,6 +5,7 @@
 ---------------------------------------------------------------------------------------------------
 local MOD  = require "shared.mod"
 local ID   = require "shared.names"
+local FPD  = require "functions.prototypes-database"
 local prototypes = {}
 ---------------------------------------------------------------------------------------------------
 -- DUMMY TECHNOLOGY FOR INSULATED COPPER CABLE
@@ -194,7 +195,7 @@ end
 -- MODIFICATION OF PLASTIC TECH
 ---------------------------------------------------------------------------------------------------
 -- Provides another way to produce insulated copper cable, with plastic.
-FUNC.AddRecipeUnlock("plastics", ID.recipe.plastic_cable)
+FPD.AddRecipeUnlock("plastics", ID.recipe.plastic_cable)
 
 ---------------------------------------------------------------------------------------------------
 -- END NOTES

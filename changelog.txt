@@ -2,8 +2,10 @@
 Version: 1.0.1
 Date: 2026-11-12
   Compatibility:
-    - Bob's Electronics: Now disables elastomer production when Angels' Petrochemical Processing is
-      not also present, because rubber is just way easier to produce.
+    - Bob´s & Angel's: Generally refined the adaptations, for multi-stage compatiblity. When Bob's
+      Electronics is present without Angels' Petrochemical Processing, elastomer will be hidden,
+      because rubber is way easier to produce. When the latter is present, but not Angel's Bio
+      Processing, elastomer production will be adapted to fit in with existing resin production.
   Bugfixes:
     - Fixed a load error that occured when Bob's Electronics was installed without Angel's
       Petrochemical Processing.

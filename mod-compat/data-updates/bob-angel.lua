@@ -91,8 +91,8 @@ do
     local elastomer_item = data.raw.item[ID.item.wood_elastomer]
     if elastomer_item ~= nil then
         elastomer_item.order = "a[petrochem-solids]-b[resinated-wood-elastomer]" -- review
-        FPL.ReplaceIngredientName(elastomer_item, ID.item.resin, "bob-resin")
     end
+    FPD.ReplaceIngredientName(ID.recipe.wood_elastomer, ID.item.resin, "bob-resin")
 end
 
 ---------------------------------------------------------------------------------------------------

@@ -59,7 +59,7 @@ FPD.ChangeLocalisedName("technology", ID.tech.insulated_cable, {
 
 --- CHANGE ORDERING ---
 
--- Reorders items and recipes.
+-- Reorders items and recipes, replaces ingredients with their equivalents.
 do
     local cable_item = data.raw.item[ID.item.insulated_cable]
     if cable_item ~= nil then
@@ -75,6 +75,13 @@ do
     if r_cable_recipe ~= nil then
         r_cable_recipe.subgroup = "bob-electronic-components"
         r_cable_recipe.order = "0-a1[b-insulated-cable-2]"
+        FPL.ChangeIcon(r_cable_recipe, {
+            { icon = "__"..MOD.name.."__/graphics/icons/insulated-cable.png",
+                icon_size = 64, scale = 0.500, shift = { 0, 0} },
+            { icon = "__bobelectronics__/graphics/icons/rubber.png",
+                icon_size = 32, scale = 0.500, shift = {-8,-8} }
+        })
+        FPL.ReplaceIngredientName(r_cable_recipe, ID.item.rubber, "bob-rubber")
     end
     local p_cable_recipe = data.raw.recipe[ID.recipe.plastic_cable]
     if p_cable_recipe ~= nil then
@@ -89,6 +96,7 @@ end
 
 
 
+
 ---------------------------------------------------------------------------------------------------
     -- BOB'S MOD SUITE ONLY
 ---------------------------------------------------------------------------------------------------
@@ -97,21 +105,23 @@ end
 
 if not MOD.angels_petrochem then
 
+    --- HIDE PROTOTYPES ---
+
     -- Hides recipes
     FPD.HideItem(ID.item.wood_elastomer)
     FPD.HideRecipe(ID.recipe.wood_elastomer)
     FPD.HideRecipe(ID.recipe.elastomer_cable)
     FPD.HideTech(ID.tech.wood_elastomer)
 
-end
-
 ---------------------------------------------------------------------------------------------------
     -- BOB'S ELECTRONICS + ANGEL'S PETROCHEMICAL PROCESSING (and more)
 ---------------------------------------------------------------------------------------------------
+-- When Angel's Petrochemical Processing is also present, rubber production becomes way harder, so
+-- it makes sense to keep wood elastomer and make adaptations for that.
 
---- RECIPES ---
+elseif MOD.angels_petrochem then
 
-if MOD.angels_petrochem then
+    --- RECIPES ---
 
     -- Elastomer: Fixes ordering, crafting category and ingredient used.
     local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
@@ -122,32 +132,10 @@ if MOD.angels_petrochem then
         elastomer_recipe.categories = { "angels-liquifying" }
         FPL.ReplaceIngredientName(elastomer_recipe, ID.item.resin, "bob-resin")
     end
-else
-    local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
-    if elastomer_recipe ~= nil then
-        elastomer_recipe.subgroup = "bob-resource"
-        elastomer_recipe.order = "c[resinated-wood-elastomer]"
-        FPL.ReplaceIngredientName(elastomer_recipe, ID.item.resin, "bob-resin")
-    end
-end
 
--- Insulated copper cable: Replaces rubber ingredient with Bob's rubber.
-local r_insulated_cable = data.raw.recipe[ID.recipe.rubber_cable]
-if r_insulated_cable ~= nil then
-    FPL.ChangeIcon(r_insulated_cable, {
-        { icon = "__"..MOD.name.."__/graphics/icons/insulated-cable.png",
-            icon_size = 64, scale = 0.500, shift = { 0, 0} },
-        { icon = "__bobelectronics__/graphics/icons/rubber.png",
-            icon_size = 32, scale = 0.500, shift = {-8,-8} }
-    })
-    FPL.ReplaceIngredientName(r_insulated_cable, ID.item.rubber, "bob-rubber")
-end
+    --- TECH ---
 
---- TECH ---
-
-FPD.AddRecipeUnlock(ID.tech.wood_elastomer, "bob-resin-wood")
-
-if MOD.angels_petrochem then
+    FPD.AddRecipeUnlock(ID.tech.wood_elastomer, "bob-resin-wood")
 
     -- Rubber-insulated copper cable recipe also unlocks with Angel's rubber tech.
     FPD.AddRecipeUnlock("angels-rubbers", ID.recipe.rubber_cable)

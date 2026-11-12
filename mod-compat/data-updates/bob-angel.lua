@@ -174,6 +174,9 @@ if MOD.angels_bioproc then
         elastomer.subgroup = "angels-bio-processing-wood-2"
         elastomer.order = "a2[wood-elastomer]"
     end
+else
+    -- Unlocks rubber-insulated copper cable with wood-processing.
+    FPD.AddRecipeUnlock("bob-wood-processing", ID.recipe.rubber_cable)
 
 end
 

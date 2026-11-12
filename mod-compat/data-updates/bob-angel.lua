@@ -92,14 +92,24 @@ end
 
 --- RECIPES ---
 
--- Elastomer: Fixes ordering, crafting category and ingredient used.
-local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
-if elastomer_recipe ~= nil then
-    elastomer_recipe.group = "angels-petrochem-refining"
-    elastomer_recipe.subgroup = "bob-resource"
-    elastomer_recipe.order = "c[resinated-wood-elastomer]"
-    elastomer_recipe.categories = { "angels-liquifying" }
-    FPL.ReplaceIngredientName(elastomer_recipe, ID.item.resin, "bob-resin")
+if MOD.angels_petrochem then
+
+    -- Elastomer: Fixes ordering, crafting category and ingredient used.
+    local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
+    if elastomer_recipe ~= nil then
+        elastomer_recipe.group = "angels-petrochem-refining"
+        elastomer_recipe.subgroup = "bob-resource"
+        elastomer_recipe.order = "c[resinated-wood-elastomer]"
+        elastomer_recipe.categories = { "angels-liquifying" }
+        FPL.ReplaceIngredientName(elastomer_recipe, ID.item.resin, "bob-resin")
+    end
+else
+    local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
+    if elastomer_recipe ~= nil then
+        elastomer_recipe.subgroup = "bob-resource"
+        elastomer_recipe.order = "c[resinated-wood-elastomer]"
+        FPL.ReplaceIngredientName(elastomer_recipe, ID.item.resin, "bob-resin")
+    end
 end
 
 -- Insulated copper cable: Replaces rubber ingredient with Bob's rubber.

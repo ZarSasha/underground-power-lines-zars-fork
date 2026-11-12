@@ -1,12 +1,12 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.1
 Date: 2026-11-12
-  Changes:
-    - Fixed a small recipe ingredient ordering issue for the underground substation.
   Bugfixes:
+    - Fixed a load error that occured when Bob's Electronics was installed without Angel's
+      Petrochemical Processing. Some more clean-up may be needed.
+    - Fixed a small recipe ingredient ordering issue for the underground substation.
     - Removed Nullius from list of optional dependencies, was kept there by mistake.
     - Added Pyanodons Coal Processing as optional dependency, was missing.
-    - TODO:Fixed some checks for presence of mods within the Bob's & Angel's mod suite.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 2026-11-11

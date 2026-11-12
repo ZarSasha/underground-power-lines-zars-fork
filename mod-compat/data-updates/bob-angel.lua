@@ -27,7 +27,7 @@ local FPD  = require "functions.prototypes-database"
 -- should still work.
 
 ---------------------------------------------------------------------------------------------------
-    -- BOB'S ELECTRONICS + ANGEL'S PETROCHEMICAL PROCESSING (and more)
+    -- COMMON CHANGES
 ---------------------------------------------------------------------------------------------------
 
 --- HIDE PROTOTYPES ---
@@ -57,71 +57,115 @@ FPD.ChangeLocalisedName("technology", ID.tech.insulated_cable, {
     "technology-name.uplz-insulated-copper-wire"
 })
 
---- CHANGE ORDERING ---
+--- CHANGE ORDERING AND FIX INGREDIENTS ---
 
--- Reorders items and recipes.
-do
-    local cable_item = data.raw.item[ID.item.insulated_cable]
-    if cable_item ~= nil then
-        cable_item.subgroup = "bob-electronic-components"
-        cable_item.order = "0-a1[b-insulated-cable]"
+-- Reorders items and recipes, replaces ingredients with their equivalents.
+
+
+do  -- Items:
+    local elastomer = data.raw.item[ID.item.wood_elastomer]
+    if elastomer ~= nil then
+        elastomer.order = "a[petrochem-solids]-b[resinated-wood-elastomer]" -- review
     end
-    local e_cable_recipe = data.raw.recipe[ID.recipe.elastomer_cable]
-    if e_cable_recipe ~= nil then
-        e_cable_recipe.subgroup = "bob-electronic-components"
-        e_cable_recipe.order = "0-a1[b-insulated-cable-1]"
-    end
-    local r_cable_recipe = data.raw.recipe[ID.recipe.rubber_cable]
-    if r_cable_recipe ~= nil then
-        r_cable_recipe.subgroup = "bob-electronic-components"
-        r_cable_recipe.order = "0-a1[b-insulated-cable-2]"
-    end
-    local p_cable_recipe = data.raw.recipe[ID.recipe.plastic_cable]
-    if p_cable_recipe ~= nil then
-        p_cable_recipe.subgroup = "bob-electronic-components"
-        p_cable_recipe.order = "0-a1[b-insulated-cable-3]"
+    local cable = data.raw.item[ID.item.insulated_cable]
+    if cable ~= nil then
+        cable.localised_name = {"item-name.uplz-insulated-copper-wire"}
+        cable.subgroup = "bob-electronic-components"
+        cable.order = "0-a1[b-insulated-cable]"
     end
 end
 
---- ITEMS ---
+do  -- Recipes:
+    local elastomer_cable= data.raw.recipe[ID.recipe.elastomer_cable]
+    if elastomer_cable ~= nil then
+        elastomer_cable.subgroup = "bob-electronic-components"
+        elastomer_cable.order = "0-a1[b-insulated-cable-1]"
+    end
+    local rubber_cable = data.raw.recipe[ID.recipe.rubber_cable]
+    if rubber_cable ~= nil then
+        rubber_cable.subgroup = "bob-electronic-components"
+        rubber_cable.order = "0-a1[b-insulated-cable-2]"
+        FPL.ChangeIcon(rubber_cable, {
+            { icon = "__"..MOD.name.."__/graphics/icons/insulated-cable.png",
+                icon_size = 64, scale = 0.500, shift = { 0, 0} },
+            { icon = "__bobelectronics__/graphics/icons/rubber.png",
+                icon_size = 32, scale = 0.500, shift = {-8,-8} }
+        })
+        FPL.ReplaceIngredientName(rubber_cable, ID.item.rubber, "bob-rubber")
+    end
+    local plastic_cable = data.raw.recipe[ID.recipe.plastic_cable]
+    if plastic_cable ~= nil then
+        plastic_cable.subgroup = "bob-electronic-components"
+        plastic_cable.order = "0-a1[b-insulated-cable-3]"
+    end
 
-local elastomer_item = data.raw.item[ID.item.wood_elastomer]
-if elastomer_item ~= nil then
-    elastomer_item.order = "a[petrochem-solids]-b[resinated-wood-elastomer]"
+    FPD.ReplaceIngredientName(ID.recipe.wood_elastomer, ID.item.resin, "bob-resin")
 end
 
---- RECIPES ---
+---------------------------------------------------------------------------------------------------
+    -- BOB'S MOD SUITE ONLY
+---------------------------------------------------------------------------------------------------
+-- Bob's Electronics by itself already provides an easy and efficient way of turning wood into
+-- resin and then rubber, so elastomer production will just be disabled.
 
--- Elastomer: Fixes ordering, crafting category and ingredient used.
-local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
-if elastomer_recipe ~= nil then
-    elastomer_recipe.group = "angels-petrochem-refining"
-    elastomer_recipe.subgroup = "bob-resource"
-    elastomer_recipe.order = "c[resinated-wood-elastomer]"
-    elastomer_recipe.categories = { "angels-liquifying" }
-    FPL.ReplaceIngredientName(elastomer_recipe, ID.item.resin, "bob-resin")
-end
+if not MOD.angels_petrochem then
 
--- Insulated copper cable: Replaces rubber ingredient with Bob's rubber.
-local r_insulated_cable = data.raw.recipe[ID.recipe.rubber_cable]
-if r_insulated_cable ~= nil then
-    FPL.ChangeIcon(r_insulated_cable, {
-        { icon = "__"..MOD.name.."__/graphics/icons/insulated-cable.png",
-            icon_size = 64, scale = 0.500, shift = { 0, 0} },
-        { icon = "__bobelectronics__/graphics/icons/rubber.png",
-            icon_size = 32, scale = 0.500, shift = {-8,-8} }
-    })
-    FPL.ReplaceIngredientName(r_insulated_cable, ID.item.rubber, "bob-rubber")
-end
+    --- HIDE PROTOTYPES ---
 
---- TECH ---
+    -- Hides recipes
+    FPD.HideItem(ID.item.wood_elastomer)
+    FPD.HideRecipe(ID.recipe.wood_elastomer)
+    FPD.HideRecipe(ID.recipe.elastomer_cable)
+    FPD.HideTech(ID.tech.wood_elastomer)
 
--- Rubber-insulated copper cable recipe also unlocks with Angel's rubber tech.
-FPD.AddRecipeUnlock("angels-rubbers", ID.recipe.rubber_cable)
+    --- TECH ---
 
--- Makes elastomer tech require basic chemistry that provides the liquefier.
-FPD.AddPrerequisite(ID.tech.wood_elastomer, "angels-basic-chemistry")
+    -- Unlocks rubber-insulated copper cable with wood-processing.
+    FPD.AddRecipeUnlock("bob-wood-processing", ID.recipe.rubber_cable)
 
+---------------------------------------------------------------------------------------------------
+    -- BOB'S ELECTRONICS + ANGEL'S PETROCHEMICAL PROCESSING (and more)
+---------------------------------------------------------------------------------------------------
+-- When Angel's Petrochemical Processing is also present, rubber production becomes way harder, so
+-- it makes sense to keep the wood elastomer and make adaptations for that.
+
+elseif MOD.angels_petrochem then
+
+    --- TECH ---
+
+    -- Makes elastomer tech require Angel's basic chemistry (for the liquefier).
+    FPD.AddPrerequisite(ID.tech.wood_elastomer, "angels-basic-chemistry")
+
+    -- Rubber-insulated copper cable recipe also unlocks with Angel's rubber tech.
+    FPD.AddRecipeUnlock("angels-rubbers", ID.recipe.rubber_cable)
+
+    if not MOD.angels_bioproc then
+
+    --- RECIPES ---
+
+    -- Wood elastomer:
+    local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
+    if elastomer_recipe ~= nil then
+        elastomer_recipe.group = "angels-petrochem-refining"
+        elastomer_recipe.subgroup = "bob-resource"
+        elastomer_recipe.order = "c[resinated-wood-elastomer]"
+        elastomer_recipe.categories = { "angels-liquifying" }
+        elastomer_recipe.energy_required = 1
+        elastomer_recipe.ingredients = {
+            { type = "item",  name = "wood",                amount =  1 },
+            { type = "item",  name = "bob-resin",           amount =  1 },
+            { type = "fluid", name = "steam",               amount =  5,
+              maximum_temperature = 250 }
+        }
+        elastomer_recipe.results = {
+            { type = "item", name = ID.item.wood_elastomer, amount =  1 }
+        }
+    end
+
+    --- TECH ---
+
+    -- Makes elastomer tech require Bob's wood processing.
+    FPD.AddPrerequisite(ID.tech.wood_elastomer, "bob-wood-processing")
 
 ---------------------------------------------------------------------------------------------------
     -- ANGEL'S BIO PROCESSING
@@ -129,37 +173,38 @@ FPD.AddPrerequisite(ID.tech.wood_elastomer, "angels-basic-chemistry")
 -- Even the early alternative to resin gets delayed and nerfed. An extra recipe will be created
 -- to make up for the delay.
 
-if MOD.angels_bioproc then
+    else
+        --- RECIPES ---
 
-    -- Early resin recipe for the liquefier.
-    local resin = util.table.deepcopy(data.raw.recipe["angels-bio-resin-wood-reprocessing"])
-    if resin ~= nil then
-        resin.name = MOD.prefix.."angels-bio-processing-early-resin"
-        resin.categories = { "angels-liquifying" }
-        resin.group = "angels-bio-processing-nauvis"
-        resin.subgroup = "angels-bio-processing-wood-2"
-        resin.order = "a1[wood-resin]"
-        resin.energy_required = 5
-        data:extend({resin})
-        FPD.AddRecipeUnlock(ID.tech.wood_elastomer, resin.name)
+        -- Early resin recipe for the liquefier.
+        local resin_recipe = util.table.deepcopy(data.raw.recipe["angels-bio-resin-wood-reprocessing"])
+        if resin_recipe ~= nil then
+            resin_recipe.name = MOD.prefix.."angels-bio-processing-early-resin"
+            resin_recipe.categories = { "angels-liquifying" }
+            resin_recipe.group = "angels-bio-processing-nauvis"
+            resin_recipe.subgroup = "angels-bio-processing-wood-2"
+            resin_recipe.order = "a1[wood-resin]"
+            resin_recipe.energy_required = 5
+            data:extend({resin_recipe})
+            FPD.AddRecipeUnlock(ID.tech.wood_elastomer, resin_recipe.name)
+        end
+
+        -- ITEM SUBGROUP: Angels bio processing wood 2.
+        data:extend({{
+            type = "item-subgroup",
+            name = "angels-bio-processing-wood-2",
+            group = "angels-bio-processing-nauvis",
+            order = "ea"
+        }})
+
+        -- Fixes ordering for elastomer recipe.
+        local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
+        if elastomer_recipe ~= nil then
+            elastomer_recipe.group = "angels-bio-processing-nauvis"
+            elastomer_recipe.subgroup = "angels-bio-processing-wood-2"
+            elastomer_recipe.order = "a2[wood-elastomer]"
+        end
     end
-
-    -- ITEM SUBGROUP: Angels bio processing wood 2.
-    data:extend({{
-        type = "item-subgroup",
-        name = "angels-bio-processing-wood-2",
-        group = "angels-bio-processing-nauvis",
-        order = "ea"
-    }})
-
-    -- Fixes ordering for elastomer recipe.
-    local elastomer = data.raw.recipe[ID.recipe.wood_elastomer]
-    if elastomer ~= nil then
-        elastomer.group = "angels-bio-processing-nauvis"
-        elastomer.subgroup = "angels-bio-processing-wood-2"
-        elastomer.order = "a2[wood-elastomer]"
-    end
-
 end
 
 ---------------------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 {
   "name": "underground-power-lines-zars-fork",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "title": "UPL - Underground Power Lines (ZarSasha's Fork)",
   "author": "ZarSasha, Giovy2001",
   "factorio_version": "2.1",
@@ -13,9 +13,9 @@
       "? angelspetrochem",
       "? angelssmelting",
       "? angelsbioprocessing",
+      "? pycoalprocessing",
       "? pypetroleumhandling",
       "? delta-rubber",
-      "? nullius",
       "? Krastorio2",
       "? wood-industry",
       "! underground-power-lines"

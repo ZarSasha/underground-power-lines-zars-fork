@@ -29,7 +29,6 @@ local item = {
     insulated_cable = prefix.."insulated-copper-cable",
     rubber          = prefix.."rubber",
     wood_elastomer  = prefix.."resin-wood-elastomer",
-    wood_chips      = prefix.."wood-chips",
     resin           = prefix.."resin"
 }
 

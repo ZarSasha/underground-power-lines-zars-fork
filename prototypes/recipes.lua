@@ -216,8 +216,8 @@ table.insert(prototypes, createUndergroundOutletRecipe("big-electric-pole", 1, {
 }))
 table.insert(prototypes, createUndergroundOutletRecipe("substation", 1, {
     { type = "item", name = "steel-plate",           amount = 10 },
-    { type = "item", name = "advanced-circuit",      amount =  5 },
-    { type = "item", name = ID.item.insulated_cable, amount =  6 }
+    { type = "item", name = ID.item.insulated_cable, amount =  6 },
+    { type = "item", name = "advanced-circuit",      amount =  5 }
 }))
 
 ---------------------------------------------------------------------------------------------------

@@ -126,7 +126,7 @@ end
 
 --- TECH ---
 
-FPD.AddRecipeUnlock(ID.tech.wood_elastomer, "bob-resin")
+FPD.AddRecipeUnlock(ID.tech.wood_elastomer, "bob-resin-wood")
 
 if MOD.angels_petrochem then
 

@@ -6,6 +6,7 @@ Date: 2026-11-12
       Electronics is present without Angels' Petrochemical Processing, elastomer will be hidden,
       because rubber is way easier to produce. When the latter is present, but not Angel's Bio
       Processing, elastomer production will be adapted to fit in with existing resin production.
+      With the last one present, the rubber-insulated cable will also be unlocked with rubber tech.
   Bugfixes:
     - Fixed a load error that occured when Bob's Electronics was installed without Angel's
       Petrochemical Processing.

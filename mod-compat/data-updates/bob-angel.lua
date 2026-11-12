@@ -164,17 +164,19 @@ end
 
 if MOD.angels_bioproc then
 
+    --- RECIPES ---
+
     -- Early resin recipe for the liquefier.
-    local resin = util.table.deepcopy(data.raw.recipe["angels-bio-resin-wood-reprocessing"])
-    if resin ~= nil then
-        resin.name = MOD.prefix.."angels-bio-processing-early-resin"
-        resin.categories = { "angels-liquifying" }
-        resin.group = "angels-bio-processing-nauvis"
-        resin.subgroup = "angels-bio-processing-wood-2"
-        resin.order = "a1[wood-resin]"
-        resin.energy_required = 5
-        data:extend({resin})
-        FPD.AddRecipeUnlock(ID.tech.wood_elastomer, resin.name)
+    local resin_recipe = util.table.deepcopy(data.raw.recipe["angels-bio-resin-wood-reprocessing"])
+    if resin_recipe ~= nil then
+        resin_recipe.name = MOD.prefix.."angels-bio-processing-early-resin"
+        resin_recipe.categories = { "angels-liquifying" }
+        resin_recipe.group = "angels-bio-processing-nauvis"
+        resin_recipe.subgroup = "angels-bio-processing-wood-2"
+        resin_recipe.order = "a1[wood-resin]"
+        resin_recipe.energy_required = 5
+        data:extend({resin_recipe})
+        FPD.AddRecipeUnlock(ID.tech.wood_elastomer, resin_recipe.name)
     end
 
     -- ITEM SUBGROUP: Angels bio processing wood 2.
@@ -186,12 +188,15 @@ if MOD.angels_bioproc then
     }})
 
     -- Fixes ordering for elastomer recipe.
-    local elastomer = data.raw.recipe[ID.recipe.wood_elastomer]
-    if elastomer ~= nil then
-        elastomer.group = "angels-bio-processing-nauvis"
-        elastomer.subgroup = "angels-bio-processing-wood-2"
-        elastomer.order = "a2[wood-elastomer]"
+    local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
+    if elastomer_recipe ~= nil then
+        elastomer_recipe.group = "angels-bio-processing-nauvis"
+        elastomer_recipe.subgroup = "angels-bio-processing-wood-2"
+        elastomer_recipe.order = "a2[wood-elastomer]"
     end
+
+    -- Rubber-insulated copper cable recipe also unlocks with Angel's rubber tech.
+    FPD.AddRecipeUnlock("angels-rubbers", ID.recipe.rubber_cable)
 
 end
 

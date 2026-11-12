@@ -57,7 +57,7 @@ FPD.ChangeLocalisedName("technology", ID.tech.insulated_cable, {
     "technology-name.uplz-insulated-copper-wire"
 })
 
---- CHANGE ORDERING ---
+--- CHANGE ORDERING AND FIX INGREDIENTS ---
 
 -- Reorders items and recipes, replaces ingredients with their equivalents.
 do
@@ -91,6 +91,7 @@ do
     local elastomer_item = data.raw.item[ID.item.wood_elastomer]
     if elastomer_item ~= nil then
         elastomer_item.order = "a[petrochem-solids]-b[resinated-wood-elastomer]" -- review
+        FPL.ReplaceIngredientName(elastomer_item, ID.item.resin, "bob-resin")
     end
 end
 

@@ -126,6 +126,8 @@ end
 
 --- TECH ---
 
+FPD.AddRecipeUnlock(ID.tech.wood_elastomer, "bob-resin")
+
 if MOD.angels_petrochem then
 
     -- Rubber-insulated copper cable recipe also unlocks with Angel's rubber tech.

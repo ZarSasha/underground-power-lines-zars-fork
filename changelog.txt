@@ -1,17 +1,18 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.1
 Date: 2026-11-12
-  Changes:
-    - Fixed a small recipe ingredient ordering issue for the underground substation.
+  Compatibility:
+    - Bob's Electronics: Now disables elastomer production when Angels' Petrochemical Processing is
+      not also present, because rubber is just way easier to produce.
   Bugfixes:
     - Fixed a load error that occured when Bob's Electronics was installed without Angel's
       Petrochemical Processing.
     - Removed Nullius from list of optional dependencies, was kept there by mistake.
     - Added Pyanodons Coal Processing as optional dependency, was missing.
-  Compatibility:
-    - Bob's Electronics: Bob's resin now unlocks with elastomer production. Also unlocks rubber-
-      insulated copper cable with Bob's wood processing tech as long as Angel's Bio Processing is
-      not present.
+  Graphics:
+    - Fixed a small recipe ingredient ordering issue for the underground substation.
+  Internal:
+    - Tidied up a bit.
   Notes:
     - More clean-up for Bob's & Angel's may still be needed.
 ---------------------------------------------------------------------------------------------------

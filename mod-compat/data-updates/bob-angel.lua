@@ -27,7 +27,7 @@ local FPD  = require "functions.prototypes-database"
 -- should still work.
 
 ---------------------------------------------------------------------------------------------------
-    -- BOB'S ELECTRONICS + ANGEL'S PETROCHEMICAL PROCESSING (and more)
+    -- COMMON CHANGES
 ---------------------------------------------------------------------------------------------------
 
 --- HIDE PROTOTYPES ---
@@ -81,14 +81,33 @@ do
         p_cable_recipe.subgroup = "bob-electronic-components"
         p_cable_recipe.order = "0-a1[b-insulated-cable-3]"
     end
+    local elastomer_item = data.raw.item[ID.item.wood_elastomer]
+    if elastomer_item ~= nil then
+        elastomer_item.order = "a[petrochem-solids]-b[resinated-wood-elastomer]" -- review
+    end
 end
 
---- ITEMS ---
 
-local elastomer_item = data.raw.item[ID.item.wood_elastomer]
-if elastomer_item ~= nil then
-    elastomer_item.order = "a[petrochem-solids]-b[resinated-wood-elastomer]"
+
+---------------------------------------------------------------------------------------------------
+    -- BOB'S MOD SUITE ONLY
+---------------------------------------------------------------------------------------------------
+-- Bob's Electronics by itself already provides an easy and efficient way of turning wood into
+-- resin and then rubber, so elastomer production will just be disabled.
+
+if not MOD.angels_petrochem then
+
+    -- Hides recipes
+    FPD.HideItem(ID.item.wood_elastomer)
+    FPD.HideRecipe(ID.recipe.wood_elastomer)
+    FPD.HideRecipe(ID.recipe.elastomer_cable)
+    FPD.HideTech(ID.tech.wood_elastomer)
+
 end
+
+---------------------------------------------------------------------------------------------------
+    -- BOB'S ELECTRONICS + ANGEL'S PETROCHEMICAL PROCESSING (and more)
+---------------------------------------------------------------------------------------------------
 
 --- RECIPES ---
 

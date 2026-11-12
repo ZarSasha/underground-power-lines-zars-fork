@@ -113,6 +113,11 @@ if not MOD.angels_petrochem then
     FPD.HideRecipe(ID.recipe.elastomer_cable)
     FPD.HideTech(ID.tech.wood_elastomer)
 
+    --- TECH ---
+
+    -- Unlocks rubber-insulated copper cable with wood-processing.
+    FPD.AddRecipeUnlock("bob-wood-processing", ID.recipe.rubber_cable)
+
 ---------------------------------------------------------------------------------------------------
     -- BOB'S ELECTRONICS + ANGEL'S PETROCHEMICAL PROCESSING (and more)
 ---------------------------------------------------------------------------------------------------
@@ -181,9 +186,6 @@ if MOD.angels_bioproc then
         elastomer.subgroup = "angels-bio-processing-wood-2"
         elastomer.order = "a2[wood-elastomer]"
     end
-else
-    -- Unlocks rubber-insulated copper cable with wood-processing.
-    FPD.AddRecipeUnlock("bob-wood-processing", ID.recipe.rubber_cable)
 
 end
 

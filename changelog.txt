@@ -3,11 +3,13 @@ Version: 1.0.1
 Date: 2026-11-12
   Bugfixes:
     - Fixed a load error that occured when Bob's Electronics was installed without Angel's
-      Petrochemical Processing. Some more clean-up may be needed.
+      Petrochemical Processing.
     - Bob's Electronics: Made Bob's resin unlock with elastomer production.
     - Fixed a small recipe ingredient ordering issue for the underground substation.
     - Removed Nullius from list of optional dependencies, was kept there by mistake.
     - Added Pyanodons Coal Processing as optional dependency, was missing.
+  Notes:
+    - Some more clean-up for Bob's & Angel's is needed.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 2026-11-11

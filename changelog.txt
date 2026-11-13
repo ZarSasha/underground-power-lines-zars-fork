@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.2
+Date: 2026-11-13
+  Compatibility:
+    - Wooden Industry: Decided to not use woodchips for the elastomer recipe after all, since the
+      recipe chain (particularly the resin production part) can already get plenty complicated
+      without it.
+  Bugfixes:
+    - Fixed som wrong recipe values with certain mods (bad functions).
+  Graphics:
+    - Gave the thumbnail a dark background, reduced resolution to 288x288.
+---------------------------------------------------------------------------------------------------
 Version: 1.0.1
 Date: 2026-11-12
   Compatibility:

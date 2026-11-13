@@ -27,18 +27,18 @@ if resin_recipe ~= nil then
     resin_recipe.icon = "__wood-industry__/graphics/icons/resin.png"
     resin_recipe.subgroup = "raw-material"
 	resin_recipe.order = "a[elastomer-production]-a[resin]"
-    resin_recipe.results = {
-        { type = "item", name = "resin", amount = 1 }
-    }
+	FPL.ReplaceResultName(resin_recipe, ID.item.resin, "resin")
 end
 
--- Changes recipe for wood elastomer.
+-- Updates recipe for wood elastomer.
 local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
 if elastomer_recipe ~= nil then
+    --[[
     -- Replaces wood with wood chips for slightly higher realism.
-    FPL.ReplaceIngredient(elastomer_recipe, ID.item.wood_elastomer, {
+    FPL.ReplaceIngredient(elastomer_recipe, "wood", {
         type = "item", name = "woodchips", amount = 10
     })
+    ]]
     -- Replaces resin ingredient.
     FPL.ReplaceIngredientName(elastomer_recipe, ID.item.resin, "resin")
 end

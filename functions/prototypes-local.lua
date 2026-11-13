@@ -45,28 +45,28 @@ exports.DisableRecipe = function(recipe)
 end
 
 -- Only changes the name of a single ingredient in a recipe.
-exports.ReplaceIngredientName = function(recipe, IngredientName, newIngredientName)
+exports.ReplaceIngredientName = function(recipe, ingredientName, newIngredientName)
     for _, ingredient in pairs(recipe.ingredients) do
-        if ingredient.name == IngredientName then
+        if ingredient.name == ingredientName then
             ingredient.name = newIngredientName
         end
     end
 end
 
 -- Replaces the amount of a single ingredient in a recipe.
-exports.ReplaceIngredientAmount = function(recipe, IngredientName, newIngredient)
+exports.ReplaceIngredientAmount = function(recipe, ingredientName, newIngredientAmount)
     for _, ingredient in pairs(recipe.ingredients) do
-        if ingredient.name == IngredientName then
-            ingredient = newIngredient
+        if ingredient.name == ingredientName then
+            ingredient.amount = newIngredientAmount
         end
     end
 end
 
 -- Replaces only a single ingredient in a recipe. Filters by name, uses table.
-exports.ReplaceIngredient = function(recipe, IngredientName, newIngredient)
-    for _, ingredient in pairs(recipe.ingredients) do
-        if ingredient.name == IngredientName then
-            ingredient = newIngredient
+exports.ReplaceIngredient = function(recipe, ingredientName, newIngredient)
+    for index, ingredient in pairs(recipe.ingredients) do
+        if ingredient.name == ingredientName then
+            recipe.ingredients[index] = newIngredient
         end
     end
 end
@@ -81,11 +81,55 @@ exports.AddIngredient = function(recipe, ingredient, position)
 end
 
 -- Removes a single ingredient from a recipe, filters by name.
-exports.RemoveIngredient = function(recipeName, ingredientName)
-    local recipe = data.raw.recipe[recipeName]
+exports.RemoveIngredient = function(recipe, ingredientName)
     for index, ingredient in pairs(recipe.ingredients) do
         if ingredient.name == ingredientName then
             table.remove(recipe.ingredients, index)
+        end
+    end
+end
+
+-- Only changes the name of a single result in a recipe.
+exports.ReplaceResultName = function(recipe, resultName, newResultName)
+    for _, result in pairs(recipe.results) do
+        if result.name == resultName then
+            result.name = newResultName
+        end
+    end
+end
+
+-- Replaces the amount of a single result in a recipe.
+exports.ReplaceResultAmount = function(recipe, resultName, newResultAmount)
+    for _, result in pairs(recipe.results) do
+        if result.name == resultName then
+            result.amount = newResultAmount
+        end
+    end
+end
+
+-- Replaces only a single result in a recipe. Filters by name, uses table.
+exports.ReplaceResult = function(recipe, resultName, newResult)
+    for index, result in pairs(recipe.results) do
+        if result.name == resultName then
+            recipe.results[index] = newResult
+        end
+    end
+end
+
+-- Adds a single result to a recipe, uses table.
+exports.AddResult = function(recipe, result, position)
+    if position ~= nil then
+        table.insert(recipe.results, position, result)
+    else
+        table.insert(recipe.results, result)
+    end
+end
+
+-- Removes a single result from a recipe, filters by name.
+exports.RemoveResult = function(recipe, resultName)
+    for index, result in pairs(recipe.results) do
+        if result.name == resultName then
+            table.remove(recipe.results, index)
         end
     end
 end

@@ -66,7 +66,7 @@ end
 exports.ReplaceIngredient = function(recipe, ingredientName, newIngredient)
     for index, ingredient in pairs(recipe.ingredients) do
         if ingredient.name == ingredientName then
-            recipe[index] = newIngredient
+            recipe.ingredients[index] = newIngredient
         end
     end
 end
@@ -109,9 +109,9 @@ end
 
 -- Replaces only a single result in a recipe. Filters by name, uses table.
 exports.ReplaceResult = function(recipe, resultName, newResult)
-    for _, result in pairs(recipe.results) do
+    for index, result in pairs(recipe.results) do
         if result.name == resultName then
-            result = newResult
+            recipe.results[index] = newResult
         end
     end
 end

@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.3
+Date: 2026-11-13
+  Graphics:
+    - Cleaned up some icons, particularly the one for wood elastomer tech, resampling had somehow
+      gotten messed up.
+---------------------------------------------------------------------------------------------------
 Version: 1.0.2
 Date: 2026-11-13
   Compatibility:

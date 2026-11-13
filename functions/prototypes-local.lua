@@ -90,6 +90,54 @@ exports.RemoveIngredient = function(recipeName, ingredientName)
     end
 end
 
+--- results
+
+-- Only changes the name of a single ingredient in a recipe.
+exports.ReplaceResultName = function(recipe, resultName, newResultName)
+    for _, result in pairs(recipe.results) do
+        if result.name == resultName then
+            result.name = newResultName
+        end
+    end
+end
+
+-- Replaces the amount of a single ingredient in a recipe.
+exports.ReplaceResultAmount = function(recipe, resultName, newResult)
+    for _, result in pairs(recipe.results) do
+        if result.name == resultName then
+            result = newResult
+        end
+    end
+end
+
+-- Replaces only a single ingredient in a recipe. Filters by name, uses table.
+exports.ReplaceResult = function(recipe, resultName, newResult)
+    for _, result in pairs(recipe.results) do
+        if result.name == resultName then
+            result = newResult
+        end
+    end
+end
+
+-- Adds a single ingredient to a recipe, uses table.
+exports.AddResult = function(recipe, result, position)
+    if position ~= nil then
+        table.insert(recipe.results, position, result)
+    else
+        table.insert(recipe.results, result)
+    end
+end
+
+-- Removes a single ingredient from a recipe, filters by name.
+exports.RemoveResult = function(recipeName, resultName)
+    local recipe = data.raw.recipe[recipeName]
+    for index, result in pairs(recipe.results) do
+        if result.name == resultName then
+            table.remove(recipe.results, index)
+        end
+    end
+end
+
 --- TECHNOLOGY ---
 
 -- Hides and disables technology (disabled: unavailable for research).

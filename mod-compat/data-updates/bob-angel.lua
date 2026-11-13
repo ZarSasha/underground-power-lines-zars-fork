@@ -141,31 +141,31 @@ elseif MOD.angels_petrochem then
 
     if not MOD.angels_bioproc then
 
-    --- RECIPES ---
+        --- RECIPES ---
 
-    -- Wood elastomer:
-    local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
-    if elastomer_recipe ~= nil then
-        elastomer_recipe.group = "angels-petrochem-refining"
-        elastomer_recipe.subgroup = "bob-resource"
-        elastomer_recipe.order = "c[resinated-wood-elastomer]"
-        elastomer_recipe.categories = { "angels-liquifying" }
-        elastomer_recipe.energy_required = 1
-        elastomer_recipe.ingredients = {
-            { type = "item",  name = "wood",                amount =  1 },
-            { type = "item",  name = "bob-resin",           amount =  1 },
-            { type = "fluid", name = "steam",               amount =  5,
-              maximum_temperature = 250 }
-        }
-        elastomer_recipe.results = {
-            { type = "item", name = ID.item.wood_elastomer, amount =  1 }
-        }
-    end
+        -- Wood elastomer: Balances recipe, fixes ordering.
+        local elastomer_recipe = data.raw.recipe[ID.recipe.wood_elastomer]
+        if elastomer_recipe ~= nil then
+            elastomer_recipe.group = "angels-petrochem-refining"
+            elastomer_recipe.subgroup = "bob-resource"
+            elastomer_recipe.order = "c[resinated-wood-elastomer]"
+            elastomer_recipe.categories = { "angels-liquifying" }
+            elastomer_recipe.energy_required = 1
+            elastomer_recipe.ingredients = {
+                { type = "item",  name = "wood",                amount =  1 },
+                { type = "item",  name = "bob-resin",           amount =  1 },
+                { type = "fluid", name = "steam",               amount =  5,
+                  maximum_temperature = 250 }
+            }
+            elastomer_recipe.results = {
+                { type = "item", name = ID.item.wood_elastomer, amount =  1 }
+            }
+        end
 
-    --- TECH ---
+        --- TECH ---
 
-    -- Makes elastomer tech require Bob's wood processing.
-    FPD.AddPrerequisite(ID.tech.wood_elastomer, "bob-wood-processing")
+        -- Makes elastomer tech require Bob's wood processing.
+        FPD.AddPrerequisite(ID.tech.wood_elastomer, "bob-wood-processing")
 
 ---------------------------------------------------------------------------------------------------
     -- ANGEL'S BIO PROCESSING

@@ -100,6 +100,62 @@ exports.RemoveIngredient = function(recipeName, ingredientName)
     end
 end
 
+-- Only changes the name of a single result in a recipe.
+exports.ReplaceResultName = function(recipeName, resultName, newResultName)
+    local recipe = data.raw.recipe[recipeName]
+    if recipe == nil then return end
+    for _, result in pairs(recipe.results) do
+        if result.name == resultName then
+            result.name = newResultName
+        end
+    end
+end
+
+-- Replaces the amount of a single result in a recipe.
+exports.ReplaceResultAmount = function(recipeName, resultName, newResult)
+    local recipe = data.raw.recipe[recipeName]
+    if recipe == nil then return end
+    for _, result in pairs(recipe.results) do
+        if result.name == resultName then
+            result = newResult
+        end
+    end
+end
+
+-- Replaces only a single result in a recipe. Filters by name, uses table.
+exports.ReplaceResult = function(recipeName, resultName, newResult)
+    local recipe = data.raw.recipe[recipeName]
+    if recipe == nil then return end
+    for _, result in pairs(recipe.results) do
+        if result.name == resultName then
+            result = newResult
+        end
+    end
+end
+
+-- Adds a single result to a recipe, uses table.
+exports.AddResult = function(recipeName, result, position)
+    local recipe = data.raw.recipe[recipeName]
+    if recipe == nil then return end
+    if position ~= nil then
+        table.insert(recipe.results, position, result)
+    else
+        table.insert(recipe.results, result)
+    end
+end
+
+-- Removes a single result from a recipe, filters by name.
+exports.RemoveResult = function(recipeName, resultName)
+    local recipe = data.raw.recipe[recipeName]
+    if recipe == nil then return end
+    local recipe = data.raw.recipe[recipeName]
+    for index, result in pairs(recipe.results) do
+        if result.name == resultName then
+            table.remove(recipe.results, index)
+        end
+    end
+end
+
 --- TECHNOLOGY ---
 
 -- Hides and disables technology (disabled: unavailable for research).

@@ -15,7 +15,7 @@ local ID   = require "shared.names"
 -- Krastorio 2 changes the recipes for all the electric poles and the substation. This mod will
 -- adapt the recipes for the underground outlets so they fit in.
 
--- Small underground outlet.
+-- Small underground outlet. (Also reduces result amount to 1.)
 local small_outlet = data.raw.recipe[ID.recipe.u_small_outlet]
 if small_outlet ~= nil then
     small_outlet.ingredients = {

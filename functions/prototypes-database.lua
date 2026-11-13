@@ -82,9 +82,9 @@ end
 exports.ReplaceIngredient = function(recipeName, ingredientName, newIngredient)
     local recipe = data.raw.recipe[recipeName]
     if recipe == nil then return end
-    for _, ingredient in pairs(recipe.ingredients) do
+    for index, ingredient in pairs(recipe.ingredients) do
         if ingredient.name == ingredientName then
-            ingredient = newIngredient
+            recipe[index] = newIngredient
         end
     end
 end

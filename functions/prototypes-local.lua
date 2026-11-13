@@ -64,9 +64,9 @@ end
 
 -- Replaces only a single ingredient in a recipe. Filters by name, uses table.
 exports.ReplaceIngredient = function(recipe, ingredientName, newIngredient)
-    for _, ingredient in pairs(recipe.ingredients) do
+    for index, ingredient in pairs(recipe.ingredients) do
         if ingredient.name == ingredientName then
-            ingredient = newIngredient
+            recipe[index] = newIngredient
         end
     end
 end

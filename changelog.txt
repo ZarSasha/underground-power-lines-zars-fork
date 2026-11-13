@@ -5,11 +5,9 @@ Date: 2026-11-13
     - Rubber [∆]: Fixed that woodchips weren't actually made use of for the elastomer recipe (used
       to work, messed it up at some point).
   Bugfixes:
-    - Fixed some functions, likely fixed some recipe values because of that.
+    - Fixed som wrong recipe values with certain mods (bad functions).
   Graphics:
     - Gave the thumbnail a dark background, reduced resolution to 288x288.
-  Internal:
-    - Tidied up functions.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.1
 Date: 2026-11-12

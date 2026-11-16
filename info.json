@@ -1,22 +1,21 @@
 {
   "name": "underground-power-lines-zars-fork",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "title": "UPL - Underground Power Lines (ZarSasha's Fork)",
   "author": "ZarSasha, Giovy2001",
   "factorio_version": "2.1",
   "description": "Adds underground electric outlets to the game for the purpose of hiding overhead wires. A 2.1 overhauled port of the mod of the same name, by Giovy2001.",
   "dependencies": [
       "base",
+      "? space-exploration",
+      "? Krastorio2",
       "? bobplates",
       "? bobelectronics",
-      "? angelsrefining",
       "? angelspetrochem",
-      "? angelssmelting",
       "? angelsbioprocessing",
       "? pycoalprocessing",
       "? pypetroleumhandling",
       "? delta-rubber",
-      "? Krastorio2",
       "? wood-industry",
       "! underground-power-lines"
   ]

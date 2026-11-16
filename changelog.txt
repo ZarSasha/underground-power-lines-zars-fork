@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.4
+Date: 2026-11-16
+  Compatibility:
+    - Space Exploration: Adapted recipes of underground outlets to fit better in.
+    - Trimmed optional dependencies.
+---------------------------------------------------------------------------------------------------
 Version: 1.0.3
 Date: 2026-11-13
   Graphics:

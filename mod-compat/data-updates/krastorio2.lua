@@ -64,7 +64,7 @@ end
 
 local prototypes = {}
 
---- ENTITIES ---
+--- ENTITY ---
 do
     local sub = util.table.deepcopy(data.raw["electric-pole"][ID.entity.u_substation])
     sub.name = ID.entity.u_kr_substation
@@ -79,7 +79,7 @@ do
     table.insert(prototypes, sub)
 end
 
---- ITEMS ---
+--- ITEM ---
 do
     local sub = util.table.deepcopy(data.raw.item[ID.item.u_substation])
     sub.name = ID.item.u_kr_substation
@@ -89,7 +89,7 @@ do
     table.insert(prototypes, sub)
 end
 
---- RECIPES ---
+--- RECIPE ---
 do
     local sub = util.table.deepcopy(data.raw.recipe[ID.recipe.u_substation])
     sub.name = ID.recipe.u_kr_substation
